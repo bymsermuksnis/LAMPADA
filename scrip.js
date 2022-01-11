@@ -3,43 +3,47 @@ const desligar = document.getElementById('desligar');
 const lamp = document.getElementById('lamp');
 const trocar = document.getElementById('trocar');
 
+function isLampQuebrada() {
 
-function lampOn() {
-    lamp.src = 'Acesa.png';
-    var funcao = 'Acesa';
+    return lamp.src.indexOf('quebrada') > -1;
+
 }
 
-function lampOff() {
-    lamp.src = 'Apagado.png';
-    var funcao = 'Apagado';
+function ligado() {
+
+    if (!isLampQuebrada()) {
+
+        lamp.src = 'Acesa.png';
+
+    }
+
 }
 
-function lampBroken() {
+function desligado() {
+
+    if (!isLampQuebrada()) {
+
+        lamp.src = 'Apagado.png';
+
+    }
+
+}
+
+function quebrado() {
+
     lamp.src = 'quebrada.png';
-    var funcao = 'quebrado';
-}
-
-function trocar() {
-    lamp.src = 'Apagado.png';
-    var funcao = 'Apagado';
-}
-
-if (funcao = 'quebrado') {
-
-    //.addEventListener('click', trocar);
 
 }
 
+ligar.addEventListener('click', ligado);
+desligar.addEventListener('click', desligado);
+lamp.addEventListener('click', quebrado);
 
-if (funcao = 'Acesa') {
-    lamp.addEventListener('click', lampBroken);
-    desligar.addEventListener('click', lampOff);
+if (!isLampQuebrada()) {
 
+    trocar.addEventListener('click', function() {
 
-}
+        location.reload();
+    });
 
-if (funcao = 'Apagado') {
-
-    ligar.addEventListener('click', lampOn);
-    lamp.addEventListener('click', lampBroken);
 }
